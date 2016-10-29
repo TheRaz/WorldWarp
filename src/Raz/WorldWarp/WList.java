@@ -15,8 +15,8 @@ public class WList
     for (int i = 0; i < worlds.size(); i++)
     {
       if(config.contains("worlds." + worlds.get(i).getName())){
-    	  
-      
+
+
       if (((World)worlds.get(i)).getEnvironment() == World.Environment.NORMAL)
         p.sendMessage("- " + ChatColor.GREEN + ((World)worlds.get(i)).getName());
       else if (((World)worlds.get(i)).getEnvironment() == World.Environment.NETHER)
@@ -25,6 +25,6 @@ public class WList
         p.sendMessage("- " + ChatColor.DARK_AQUA + ((World)worlds.get(i)).getName());
       }
       }
-      
+
   }
 }

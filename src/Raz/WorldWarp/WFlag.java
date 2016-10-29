@@ -7,7 +7,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 public class WFlag {
-	public WFlag(Player player, String[] args, FileConfiguration config,Server server) {	
+	public WFlag(Player player, String[] args, FileConfiguration config,Server server) {
 		if(args.length < 1){
 			player.sendMessage(ChatColor.RED + "[WorldWarp]: Use /wflag [name] -flags .");
 		}else{
@@ -42,7 +42,7 @@ public class WFlag {
 					server.getWorld(args[0]).setDifficulty(Difficulty.HARD);
 					config.set("worlds." + args[0].toLowerCase() + ".difficulty", "HARD");
 					player.sendMessage(ChatColor.RED + "[WorldWarp]: " + ChatColor.GREEN + args[0] + " is set to hard.");
-				}     
+				}
 			}else{
 				player.sendMessage(ChatColor.RED + "[WorldWarp]: Sorry, can't find that world.");
 			}

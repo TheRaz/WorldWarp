@@ -48,13 +48,13 @@ public class WCreate {
 							isFlat = 1;
 							World.generator(new Flatlands("16"));
 							World.environment(Environment.valueOf("NORMAL"));
-							
+
 						}else{
 							World.environment(Environment.valueOf(args[1].toUpperCase()));
 						}
 						player.sendMessage(ChatColor.RED + "[WorldWarp]: " + ChatColor.DARK_GREEN + "Generating world: " + worldname);
 						World.createWorld();
-						server.getWorld(worldname).setPVP(false);	
+						server.getWorld(worldname).setPVP(false);
 						server.getWorld(worldname).setDifficulty(Difficulty.PEACEFUL);
 						if(isFlag("-nopvp",args)){
 							server.getWorld(worldname).setPVP(false);
@@ -74,7 +74,7 @@ public class WCreate {
 						if(isFlag("-hard",args)){
 							server.getWorld(worldname).setDifficulty(Difficulty.HARD);
 						}
-						
+
 							if(server.getWorld(worldname).getEnvironment().toString().equalsIgnoreCase("NORMAL")){
 								WWTrack.worldLoadsN.increment();
 							}

@@ -22,10 +22,10 @@ public class WImport {
 				  server.createWorld(new WorldCreator(worldname));
 			      String n = server.getWorld(worldname).getName();
 	              String Env = server.getWorld(worldname).getEnvironment().name();
-	              Long seed = Long.valueOf(server.getWorld(worldname).getSeed());;	  
+	              Long seed = Long.valueOf(server.getWorld(worldname).getSeed());;
 	              boolean pvp = server.getWorld(worldname).getPVP();
 	              String diff = server.getWorld(worldname).getDifficulty().name();
-	          	
+
 					if(server.getWorld(worldname).getEnvironment().toString().equalsIgnoreCase("NORMAL")){
 						WWTrack.worldLoadsN.increment();
 					}
@@ -35,7 +35,7 @@ public class WImport {
 					if(server.getWorld(worldname).getEnvironment().toString().equalsIgnoreCase("THE_END")){
 						WWTrack.worldLoadsT.increment();
 					}
-				
+
 	              config.set("worlds." + n + ".name", n);
 	              config.set("worlds." + n + ".environmate", Env);
 	              config.set("worlds." + n + ".seed", seed);
