@@ -7,7 +7,7 @@ import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 public class WDelete {
-	public WDelete(Player player, String[] args, FileConfiguration config,Server server) {	
+	public WDelete(Player player, String[] args, FileConfiguration config,Server server) {
 		if(args.length < 1){
 			player.sendMessage(ChatColor.RED + "[WorldWarp]: Use /wdelete [name].");
 		}else{
@@ -17,15 +17,15 @@ public class WDelete {
 					if(args[1].equalsIgnoreCase("-h")){
 						hard = true;
 					}
-				}	
+				}
 				World world = server.getWorld(args[0]);
 				World newworld = server.getWorlds().get(0);
-				List<Player> players = world.getPlayers();    
+				List<Player> players = world.getPlayers();
 				for (Player pl : players) {
 					pl.teleport(newworld.getSpawnLocation());
 				}
 				if(hard){
-					File folder = new File(server.getWorld(args[0]).getWorldFolder().getPath());	
+					File folder = new File(server.getWorld(args[0]).getWorldFolder().getPath());
 					server.unloadWorld(args[0], true);
 					config.getConfigurationSection("worlds").set(args[0], null);
 					deleteDirectory(folder);
@@ -33,7 +33,7 @@ public class WDelete {
 
 				}else{
 					server.unloadWorld(args[0], true);
-					config.getConfigurationSection("worlds").set(args[0], null);	
+					config.getConfigurationSection("worlds").set(args[0], null);
 					player.sendMessage(ChatColor.RED + "[WorldWarp]: World have been SOFT deleted, use /wimport " + args[0]  + " to import it again.");
 				}
 			}else{

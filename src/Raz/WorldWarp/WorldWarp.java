@@ -27,7 +27,7 @@ import Raz.WorldGenerators.Flatlands;
 
 
 public class WorldWarp extends JavaPlugin
-{ 
+{
 
 	public static HashMap<Player, Location> LastLocation = new HashMap<Player, Location>();
 	private static final Logger log = Logger.getLogger("Minecraft");
@@ -50,9 +50,9 @@ public class WorldWarp extends JavaPlugin
 		} catch (IOException e) {
 			log.warning("[WorldWarp] IOException occured. Try to remove WorldWarp Folder.");
 		}
-		
-		log.info("[WorldWarp] Enabled! Running 3.6");	
-		
+
+		log.info("[WorldWarp] Enabled! Running 3.6");
+
 		console.sendMessage(ChatColor.GREEN + " _  _  _             _     _ _  _  _                   ");
 		console.sendMessage(ChatColor.GREEN + "| || || |           | |   | | || || |                  ");
 		console.sendMessage(ChatColor.GREEN + "| || || | ___   ____| | _ | | || || | ____  ____ ____  ");
@@ -63,7 +63,7 @@ public class WorldWarp extends JavaPlugin
         WWTrack.init(this);
 		loadWorlds();
 
-	}	
+	}
 	public boolean checkVersion() throws IOException{
 		URL versionurl = new URL("http://www.skoltrott.net/worldwarp_version.txt");
         BufferedReader in = new BufferedReader(
@@ -83,7 +83,7 @@ public class WorldWarp extends JavaPlugin
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
-	{   
+	{
 		if(!(sender instanceof Player)){
 			log.warning("[WorldWarp] WorldWarp currently only accepts In-Game commands.");
 			return true;
@@ -118,7 +118,7 @@ public class WorldWarp extends JavaPlugin
 				this.saveConfig();
 			}
 		}
-		return true;		
+		return true;
 	}
 	private boolean hasPerm(Player player, String node)
 	{
@@ -144,7 +144,7 @@ public class WorldWarp extends JavaPlugin
 	public void onDisable(){
 		this.saveConfig();
 		log.info("[WorldWarp] Saving data, Goodbye!");
-	}	
+	}
 	private void loadWorlds(){
 		log.info("[WorldWarp] Loading worlds.");
 		Object[] worldNames = getConfig().getConfigurationSection("worlds").getKeys(false).toArray();
@@ -158,7 +158,7 @@ public class WorldWarp extends JavaPlugin
 			}else{
 			getServer().createWorld(new WorldCreator(label));
 			}
-		
+
 				if(getServer().getWorld(label).getEnvironment().toString().equalsIgnoreCase("NORMAL")){
 					WWTrack.worldLoadsN.increment();
 				}
@@ -168,21 +168,21 @@ public class WorldWarp extends JavaPlugin
 				if(getServer().getWorld(label).getEnvironment().toString().equalsIgnoreCase("THE_END")){
 					WWTrack.worldLoadsT.increment();
 				}
-			
-			getServer().getWorld(label).setPVP(getConfig().getBoolean("worlds." + label + ".pvp"));	
+
+			getServer().getWorld(label).setPVP(getConfig().getBoolean("worlds." + label + ".pvp"));
 			if(getConfig().contains("worlds." + label + ".difficulty")){
 				getServer().getWorld(label).setDifficulty(Difficulty.valueOf(getConfig().getString("worlds." + label + ".difficulty").toUpperCase()));
 			}else{
 				getConfig().set("worlds." + label  + ".difficulty", "EASY");
 				getServer().getWorld(label).setDifficulty(Difficulty.EASY);
 				this.saveConfig();
-				
+
 			}
 			log.info("[WorldWarp] Loading: "+label+" : "+counter+"/"+worldNames.length );
 		}
 	}
 
-	
+
 	public void checkFiles() throws FileNotFoundException, IOException{
 
 		getConfig().options().copyDefaults();
@@ -204,7 +204,7 @@ public class WorldWarp extends JavaPlugin
 				String n = ((World)worlds.get(i)).getName();
 				log.info("[WorldWarp] Adding world "+n);
 				String Env = ((World)worlds.get(i)).getEnvironment().name();
-				Long seed = Long.valueOf(((World)worlds.get(i)).getSeed());   
+				Long seed = Long.valueOf(((World)worlds.get(i)).getSeed());
 				boolean pvp = ((World)worlds.get(i)).getPVP();
 				String diff = ((World)worlds.get(i)).getDifficulty().name();
 				getConfig().set("worlds." + n + ".name", n);
@@ -217,7 +217,7 @@ public class WorldWarp extends JavaPlugin
 			}
 
 			this.saveConfig();
-		}	
+		}
 
 
 	}
